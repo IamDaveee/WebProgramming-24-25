@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órarend</title>
+    <style>
+        table, td, th{
+            border: 1px black solid;
+        }
+        .napok{
+            width: 20%;
+        }
+        .mikor{
+            white-space: nowrap;
+        }
+        td, th{
+            padding: .5rem;
+            text-align: center;
+        }
+        table{
+            border: 8px inset grey;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    
+    <table>
+        <caption>Órarend</caption>
+        <tr><th colspan="7">Órarend</th></tr>
+        <tr>
+            <td>Sorszám</td>
+            <td>Óraszám</td>
+            <th class="napok">H</th>
+            <th class="napok">K</th>
+            <th class="napok">Sz</th>
+            <th class="napok">Cs</th>
+            <th class="napok">P</th>
+        </tr>
+        <tr>
+            <th>1.</th>
+            <th class="mikor">8:00-8:45</th>
+            <td>-</td>
+            <td rowspan="3">WebProg M112</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>2.</th>
+            <th class="mikor">8:55-9:40</th>
+            <td>h2</td>
+            <td>sz2</td>
+            <td></td>
+            <td></td>
+            
+        </tr>
+        <tr>
+            <th>3.</th>
+            <th class="mikor">9:50-10:35</th>
+            <td>h3</td>
+            <td>sz3</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+</body>
+</html>
