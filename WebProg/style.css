@@ -1,0 +1,50 @@
+#wrapper{
+    width: 960px;
+    margin: auto;
+    padding: 1rem;
+    padding-right: 0;
+    background-color: silver;
+}
+nav{
+    float: left;
+    width: 150px;
+
+}
+nav ul{
+    list-style: none;
+    padding-inline-start: 0;
+}
+nav a{
+    text-decoration: none;
+    background-color: lightblue;
+    padding: .5rem;
+    display: block;
+    margin-bottom: 5px;
+    border: 3px grey outset;
+    text-align: center;
+}
+nav a:hover{
+    background-color: blue;
+    color: white;
+    border: 3px inset grey;
+}
+
+
+.almenu{
+    display: none;
+}
+.almenus:hover .almenu{
+    display: block;
+}
+iframe{
+    /* border: 1px solid black; */
+    width: 800px;
+    height: 75vh;
+    float: right;
+}
+footer{
+    clear: both;
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px black solid;
+}

@@ -1,0 +1,57 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #000;
+    color: rgb(255, 255, 255);
+}
+
+main{
+    max-width: 960px;
+    min-width: 480px;
+    margin: auto;
+}
+
+p{
+    text-align: justify;
+    font-family: Calibri,Arial, Helvetica, sans-serif;
+}
+.vissza{
+    text-align: right;
+}
+.pkozepre{
+    text-align: center;
+}
+
+img{
+    margin: 0px 10px;
+}
+
+figure{
+    text-align: center;
+    width: fit-content;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    color: black;
+}
+.img-balra{
+    float: left;
+    margin: 0px 0px 5px 20px;
+}
+.img-jobbra{
+    float: right;
+    margin: 0px 0px 5px 20px;
+}
+
+figure>img, figure div{
+    border: inset silver 10px;
+
+}
+.clear{
+    clear: both;
+}
+figure img:hover{
+    filter: blur(0px);
+    filter: sepia(50%);
+}

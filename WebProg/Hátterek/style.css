@@ -1,0 +1,58 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    font-family: sans-serif;
+    color: aliceblue;
+    text-shadow: 2px 2px 4px black;
+    /*
+    */
+    height: 200vh;
+}
+body{
+    background: cadetblue url("./pics/3d-render-low-poly-plexus-design-network-communications.jpg") no-repeat center scroll;
+    background-size: cover;
+    padding: 1rem;
+}
+.box{
+    max-width: 480px;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    margin: auto;
+}
+.box1{
+    background-image:url("./pics/amazing-colorful-fractal-abstract-header.jpg"),linear-gradient(red, darkviolet,blue);
+}
+.box2{
+    background: url("./pics/amazing-colorful-fractal-abstract-header.jpg") darkmagenta;
+    background-size: cover;
+    aspect-ratio: 1024/300;
+}
+
+#film{
+    max-width: 700px;
+    margin: auto;
+    background: url("./pics/filmcsik.gif");
+    background-size: contain;
+    background-color: rgba(255, 255, 255, .5);
+    padding: .5rem;
+}
+
+#header{
+    max-width: 75%;
+    aspect-ratio: 700/423;
+    background-image: url("./pics/cimkep.jpg");
+    background-size: cover;
+    margin: auto;
+}
+#header h1{
+    padding: .5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#reszlet{
+    max-width: 75%;
+    margin: auto;
+}
+#reszlet iframe{
+    width: 100%;
+}
