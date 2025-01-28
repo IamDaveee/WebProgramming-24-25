@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS adattípusok</title>
+</head>
+<body>
+    <H1>Adattípusok</H1>
+    <p>Nyisd meg a konzolt!</p>
+    <div id="demo"></div>
+    
+    <script>
+    // Adattípusok
+
+        console.log('Adattípusok')
+        // number
+            document.getElementById('demo').innerHTML = '<h2>Number</h2>'
+            console.log('Numbers:',1,2,3,3.14)
+            let x = 3.14
+            console.log(x, typeof x)
+            x=Math.PI
+            console.log(x, typeof x)
+        // string
+            x="3,14"
+            console.log(x, typeof x)
+        // boolean - logikai
+            let y=true
+            console.log(y, typeof y)
+            y=false
+            console.log(y, typeof y)
+
+            console.log(true==1, true=='1')
+        // undefined
+            let z;
+            console.log(z, typeof z)
+        // null - ismeretlen
+            null
+            z=null
+            console.log(z, typeof null)
+        //Nan - Not A Number
+            
+        // tömb, objektum
+            console.log('tomb: ',[1,2,3,3.14, 'id',x,y,z, true, null, undefined, NaN])
+            // objektum (kulcs-érték párok)
+        
+    </script>
+</body>
+</html>
