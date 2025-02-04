@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS adattípusok</title>
+</head>
+<body>
+    <h1>Adattípusok</h1>
+    <p align="right">Nyisd meg a konzolt!</p>
+    <ul id="demo"></ul>
+    <script>
+    // window.alert('Nyisd meg a konzolt!')
+    // Adattípusok
+        console.log('Adattípusok')
+        // number
+            document.getElementById('demo').innerHTML = '<li>Number</li>'
+            console.log ( 'Numbers: ', 1, 2 ,3,14 , 9.81)
+            let Pi
+                console.log( 'Pi változó értéke: ', Pi, 'típusa: ',typeof(Pi) )
+            Pi = [3,14] // hibás: Pi =3,14
+                console.log( 'Pi változó: ', Pi, 'típusa: ',typeof(Pi) )
+            Pi = 3.14
+                console.log( 'Pi változó: ', Pi, 'típusa: ',typeof(Pi) )
+            Pi = Math.PI
+                console.log( 'Pi változó: ', Pi, 'típusa: ',typeof(Pi) )
+        // string
+            let datatype = 'String'
+            const demoElement = document.getElementById('demo')
+            demoElement.innerHTML += '<li>' + datatype + '</li>'
+        // boolean - logikai
+            datatype = 'Boolean - logikai'
+            demoElement.innerHTML += '<li>' + datatype + '</li>'
+            console.log( true, typeof(true), '; ', false, typeof (false) )
+            console.log( '1==true ? ',1==true, '\n"1"==true ? ',"1"==true, '\n DE! 1===true ?', 1===true )
+        // undefined
+        datatype = 'Undefind'
+            demoElement.innerHTML += '<li>' + datatype + '</li>'
+            console.log(undefined, typeof (undefined))
+
+        // null - ismeretlen
+    
+    // tömb, objektum
+        datatype = 'Összetett addatípusok'
+            demoElement.innerHTML += '<p>' + datatype + '</p>'
+        datatype = 'Tömb'
+            demoElement.innerHTML += '<li>' + datatype + '</li>'
+            console.log ('Tömb: ', [1, 2,3,14, 'pi', Pi, true, null, [1,1,2,3,5,8]])    
+        // Objektum (kulcs-érték párok)
+        datatype = 'objektum (kulcs-érték párok)'
+            demoElement.innerHTML += '<li>' + datatype + '</li>'
+    </script>
+</body>
+</html>

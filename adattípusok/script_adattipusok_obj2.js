@@ -60,17 +60,17 @@ console.log(null)
 
 
 /*
-* Array (tömb)
+* mobiles (tömb)
 */
 
-// Array<_>
-// array of ?
+// mobiles<_>
+// mobiles of ?
 
-// Array<string>
+// mobiles<string>
 
 console.log(['elso', 'masodik', 'harmadik']);
 
-// Array<number>
+// mobiles<number>
 console.log([2, 12, 3]);
 
 // szűrés
@@ -87,7 +87,7 @@ console.log([true, 2, "string.."]);
 
 // több dimenziós tömb
 
-// Array<Array<number>>
+// mobiles<mobiles<number>>
 console.log([[2, 3], [32, 10], [6, 4]][1][1]);
 
 /*
@@ -101,19 +101,23 @@ console.log(
         firstName: 'József',
         lastName: 'Kovács',
         age: 30
-    }
+    }.lastName
 );
 
-let person1 =  { firstName: 'József', lastName: 'Kovács', age: 30 }
-console.log (person1)
+let person1 = { firstName: 'János', lastName: 'Kiss', age: 25 }
+console.log(person1)
+console.log(person1.lastName, person1.firstName)
+console.log(person1.lastName+person1.firstName)
 
 
 
 // lookup, kulcs alapú kikérés
+console.log(person1.lastName)
+console.log(person1['lastName'])
 
-console.log (person1.firstName+' '+person1['lastName'] )
 
-let kovacs2 =    {
+console.log(
+    {
         firstName: 'József',
         lastName: 'Kovács',
         age: 30,
@@ -122,14 +126,10 @@ let kovacs2 =    {
             street: 'Király u.',
             city: 'Budapest'
         }
-    }
+    }.phoneNumbers[0]
+);
 
-console.log (kovacs2)
-console.log (kovacs2.phoneNumbers[1] , kovacs2.address.city, kovacs2.address.street)
-
-console.log( [person1, kovacs2] )
-
-const mobiles = [
+let mobiles =     [
     {
         brand: 'Apple',
         name: 'iPhone X',
@@ -151,7 +151,7 @@ const mobiles = [
     {
         brand: 'ZTE',
         name: 'Blade',
-        price: null,
+        price: 111000,
         provider: {
             country: 'DE',
             name: 'Vodafone'
@@ -159,50 +159,48 @@ const mobiles = [
     }
 ]
 
-
 // 1. Az első telefon nevét
-console.log('Az első telefon neve:')
-console.log( mobiles[0].name )
+console.log('Az első telefon neve: ')
+console.log( mobiles[0].name)   
+
+
 
 // 2. A második telefon árát
-console.log(mobiles[1].price)
+console.log( mobiles[1].price )
+
+
 
 // 3. A harmadik telefon szolgáltatójának országát
-console.log(mobiles[2].provider.country)
+console.log() 
 
 
 console.log (mobiles)
 
 for (let index = 0; index < mobiles.length; index++) {
     console.log(mobiles[index])
-    document.getElementById('mobilok').innerHTML += mobiles[index].brand  + '<br>'
+
+    // document.getElementById('mobilok').innerHTML+= mobiles[index].brand + ' ' + mobiles[index].name + '<br>'
 }
 
-console.log("for - in")
+console.log ('for of cikussal')
 
-for (const key in mobiles) {
-    console.log (mobiles[key].brand)
+
+for (const mobil of mobiles) {
+    console.log(mobil)
+
+    document.getElementById('mobilok').innerHTML+= mobil.brand + ' ' + mobil.name + '<br>'
+
+    // document.getElementById('mobilok').innerHTML+= `${mobil.brand} ${mobil.name} ${mobil.price!=undefined ? mobil.price : ''} <br>`
+
 }
 
 
-mobiles.push ({
-    brand: 'Samsung',
-    name: 'S25',
-    provider: {
-        country: 'HU',
-        name: 'One'
-    }
-})
 
-document.getElementById('mobilok').innerHTML=''
 
-for (const mobile of mobiles) {
-    // let price = ''; if (mobile.price !=undefined) {price = mobile.price}
-    let price = (mobile.price !=null) ? mobile.price : ''
-    console.log(mobile)
-    document.getElementById('mobilok').innerHTML+= mobile.brand + ' ' + mobile.name + price +  '<br>'
-    //document.getElementById('mobilok').innerHTML+= `${mobile.brand} ${mobile.name} ${mobile.price!=null ? mobile.price : ''} <br>`
-}
+
+
+
+
 
 
 

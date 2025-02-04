@@ -90,30 +90,38 @@ console.log([true, 2, "string.."]);
 // Array<Array<number>>
 console.log([[2, 3], [32, 10], [6, 4]][1][1]);
 
+
 /*
 * Object (objektum)
 */
 
 // kulcs- érték párok sorozata
 
+
+
 console.log(
     {
         firstName: 'József',
         lastName: 'Kovács',
         age: 30
-    }
-);
+    }.lastName
+    );
 
-let person1 =  { firstName: 'József', lastName: 'Kovács', age: 30 }
-console.log (person1)
+let person1 =  {
+    firstName: 'József',
+    lastName: 'Kovács',
+    age: 30
+}
 
-
-
+console.log( person1 )
+console.log( person1.firstName, ' ' , person1.lastName )
+    
 // lookup, kulcs alapú kikérés
 
-console.log (person1.firstName+' '+person1['lastName'] )
+console.log(person1['lastName']);
 
-let kovacs2 =    {
+console.log(
+    {
         firstName: 'József',
         lastName: 'Kovács',
         age: 30,
@@ -122,88 +130,62 @@ let kovacs2 =    {
             street: 'Király u.',
             city: 'Budapest'
         }
-    }
+    }.address.city
+    );
 
-console.log (kovacs2)
-console.log (kovacs2.phoneNumbers[1] , kovacs2.address.city, kovacs2.address.street)
-
-console.log( [person1, kovacs2] )
-
-const mobiles = [
-    {
-        brand: 'Apple',
-        name: 'iPhone X',
-        price: 250000,
-        provider: {
-            country: 'HU',
-            name: 'Vodafone'
+    
+    let mobiles =     [
+        {
+            brand: 'Apple',
+            name: 'iPhone X',
+            price: 250000,
+            provider: {
+                country: 'HU',
+                name: 'Vodafone'
+            }
+        },
+        {
+            brand: 'Huawei',
+            name: '10',
+            price: 180000,
+            provider: {
+                country: 'DE',
+                name: 'T-Mobile'
+            }
+        },
+        {
+            brand: 'ZTE',
+            name: 'Blade',
+            price: 110000,
+            provider: {
+                country: 'DE',
+                name: 'Vodafone'
+            }
         }
-    },
-    {
-        brand: 'Huawei',
-        name: '10',
-        price: 180000,
-        provider: {
-            country: 'DE',
-            name: 'T-Mobile'
-        }
-    },
-    {
-        brand: 'ZTE',
-        name: 'Blade',
-        price: null,
-        provider: {
-            country: 'DE',
-            name: 'Vodafone'
-        }
-    }
-]
-
-
+    ]
+    
 // 1. Az első telefon nevét
-console.log('Az első telefon neve:')
-console.log( mobiles[0].name )
+
+console.log (mobiles[0].name)
 
 // 2. A második telefon árát
-console.log(mobiles[1].price)
+console.log( mobiles[1].price)
 
 // 3. A harmadik telefon szolgáltatójának országát
-console.log(mobiles[2].provider.country)
+console.log( mobiles[2].provider.country)
 
+// -----------------------
 
-console.log (mobiles)
+console.log ('Mobilok', mobiles)
 
 for (let index = 0; index < mobiles.length; index++) {
-    console.log(mobiles[index])
-    document.getElementById('mobilok').innerHTML += mobiles[index].brand  + '<br>'
+    console.log (mobiles[index])
 }
 
-console.log("for - in")
-
-for (const key in mobiles) {
-    console.log (mobiles[key].brand)
+for (const mobil of mobiles) {
+    console.log(mobil)    
+    document.getElementById('mobilok').innerHTML += mobil.brand +' '+  mobil.name + " ár: "+ mobil.price  + '<br>'
 }
-
-
-mobiles.push ({
-    brand: 'Samsung',
-    name: 'S25',
-    provider: {
-        country: 'HU',
-        name: 'One'
-    }
-})
-
-document.getElementById('mobilok').innerHTML=''
-
-for (const mobile of mobiles) {
-    // let price = ''; if (mobile.price !=undefined) {price = mobile.price}
-    let price = (mobile.price !=null) ? mobile.price : ''
-    console.log(mobile)
-    document.getElementById('mobilok').innerHTML+= mobile.brand + ' ' + mobile.name + price +  '<br>'
-    //document.getElementById('mobilok').innerHTML+= `${mobile.brand} ${mobile.name} ${mobile.price!=null ? mobile.price : ''} <br>`
-}
-
 
 
 
