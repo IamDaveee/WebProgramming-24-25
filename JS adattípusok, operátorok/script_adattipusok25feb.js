@@ -1,0 +1,241 @@
+
+// komment (line comment)
+
+/*
+blokk
+komment
+*/
+
+/*
+* Adattípusok
+*/
+
+// string (karakterfűzér)
+console.log('szia');
+console.log("Helló!");
+let text
+text = 'Szia!'
+console.log(text)
+text = 'Helló!'
+console.log(text, '\n a típusa: ', typeof (text) )
+
+
+// tegyük nagybetűssé / kisbetűssé
+    // text.toUpperCase() text.toLowerCase())
+
+// nézzük meg hány karakterkből áll
+    //text.length
+
+    text = prompt('??')
+
+// fordítsuk (reverse)
+    // (text.slice(index, index+1)
+
+    // tömbbel..
+        // text.split('').reverse().join('')
+
+        
+        // palindrom-e
+            let pattern= '!? ,-;.:'
+            // replaceAll(pattern[index],'')
+    
+        // regExp: (https://www.w3schools.com/js/js_regexp.asp)
+            // string.replace(/[^a-zöüóőúéáűí]/g,'')
+
+   alert(text==reversText ? "palindrom" : "nem palindrom")
+
+// fűzzünk hozzá egy másik stringet
+
+
+// number (szám)
+
+console.log(500);
+let x = 201
+console.log (x, typeof (x) )
+
+// adjunk hozzá egy másik számot
+// vonjunk ki belőle
+// osztás utáni maradék
+
+
+// boolean (igaz hamis értéket reprezentáló típus)
+
+console.log(true);
+console.log(false);
+console.log (' true === "1" ?', true === "1" )
+
+// logikai ÉS
+// (boolean, boolean) -> boolean
+
+// negálás
+// ...
+
+// undefined
+console.log(undefined);
+let y
+console.log(y);
+
+
+// null
+console.log(null)
+
+// debugger
+
+
+/*
+* Array (tömb)
+*/
+
+// Array<_>
+// array of ?
+
+// Array<string>
+
+console.log(['elso', 'masodik', 'harmadik']);
+console.log(typeof ['elso', 'masodik', 'harmadik']);
+
+// Array<number>
+console.log([2, 12, 3]);
+
+// szűrés
+// sorba rendezés
+// új elem hozzáadása
+// aggregálás
+
+
+console.log([2, 12, 3][1]);
+
+
+// nem javasolt
+console.log([true, 2, "string.."]);
+
+// több dimenziós tömb
+
+// Array<Array<number>>
+console.log([[2, 3], [32, 10], [6, 4]][1][1]);
+
+
+
+/*
+* Object (objektum)
+*/
+
+// kulcs- érték párok sorozata
+
+console.log(
+    {
+        firstName: 'József',
+        lastName: 'Kovács',
+        age: 30
+    }
+);
+
+let kovacs= { firstName: 'József', lastName: 'Kovács', age: 30 }
+console.log(kovacs)
+// lookup, kulcs alapú kikérés
+console.log( kovacs.lastName, kovacs['firstName'] );
+
+
+let kovacs2= 
+    {
+        firstName: 'József',
+        lastName: 'Kovács',
+        age: 30,
+        phoneNumbers: ['067023456', '067023457'],
+        address: {
+            street: 'Király u.',
+            city: 'Budapest'
+        }
+    }
+console.log ( kovacs2 )
+console.log ( 'Telefonszám(ok): ', kovacs2.phoneNumbers[0], kovacs2.phoneNumbers[1])
+console.log(kovacs2.address.city, kovacs2.address.street )
+
+const persons = [kovacs]
+console.log( persons)
+
+persons.push(kovacs2)
+console.log( persons)
+
+let mobiles =     [
+    {
+        brand: 'Apple',
+        name: 'iPhone X',
+        price: 250000,
+        provider: {
+            country: 'HU',
+            name: 'Vodafone'
+        }
+    },
+    {
+        brand: 'Huawei',
+        name: '10',
+        price: null,
+        provider: {
+            country: 'DE',
+            name: 'T-Mobile'
+        }
+    },
+    {
+        brand: 'ZTE',
+        name: 'Blade',
+        provider: {
+            country: 'DE',
+            name: 'Vodafone'
+        }
+    }
+]
+
+// 1. Az első telefon nevét
+
+console.log(mobiles[0].name)
+
+// 2. A második telefon árát
+console.log(mobiles[1].price)
+
+// 3. A harmadik telefon szolgáltatójának országát
+console.log(mobiles[2].provider.country)
+
+// 3. telefon ára
+console.log(mobiles[2].price)
+
+
+mobiles.push(
+    {
+        brand: 'Samsung',
+        name: 'S25',
+        price: 600000,
+        provider: {
+            country: 'HU',
+            name: 'One'
+        }
+    }
+)
+
+console.log ('for')
+for (let index = 0; index < mobiles.length; index++) {
+    console.log ( mobiles[index])
+}
+
+for (const key in mobiles) {
+    console.log(key, mobiles[key])   
+    /*
+        let element = mobiles[key]
+        console.log (element)
+    */
+}
+
+mobiles.forEach(element => console.log(element) )
+
+for (const iterator of mobiles) {
+    console.log(iterator)
+
+    let price = ''; 
+    if (iterator.price!=undefined) {price = ' ár: ' + iterator.price}
+
+        //let price = iterator.price!=undefined ? ' ár: ' + iterator.price : ''
+
+    document.getElementById('mobilok').innerHTML += iterator.brand + ' ' + iterator.name + price + '<br>'
+    
+        // document.getElementById('mobilok').innerHTML += ` ${iterator.brand} ${iterator.name} ${iterator.price!=null ? ' ár: ' + iterator.price : ''}<br>` 
+}
