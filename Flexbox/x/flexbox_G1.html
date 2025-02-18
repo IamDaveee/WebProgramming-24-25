@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+    <style>
+        
+        * { box-sizing: border-box;}
+        html { font-family: Arial, Helvetica, sans-serif;}
+        p { text-align: justify;}
+
+        .flexbox {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* short-hand megadás 
+            flex-flow: row wrap;
+            */
+
+            justify-content: space-evenly;
+            align-items: stretch;
+        }
+        
+        .flexbox>div { 
+            padding: .5rem; margin: 2px;
+            background-color: silver; border: 1px solid black;
+            /* 
+            max-width: 23%; 
+            */
+            flex-basis: calc(25% - 4px);
+        }
+
+        /* CSS Media Queries
+            https://www.w3schools.com/css/css3_mediaqueries.asp
+        */
+
+        @media (orientation: landscape) {}
+        
+        @media (orientation: portrait) {
+            /*
+            .flexbox>div { flex-basis: 100%; }
+            */
+        }
+
+        @media (max-width: 576px) {
+            .flexbox>div { flex-basis: 100%; }
+        }
+
+        @media (max-width: 768px) and (min-width: 576px) {
+            .flexbox>div { flex-basis: 30%; }
+        }
+        
+        @media (min-width: 1200px) {
+            .flexbox>div { flex-basis: 16%; }
+        }
+
+        /* 
+            
+            @media ( min-width: calc(50vh) ) { .flexbox>div {flex-basis: 48%;} }
+        */
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Flexbox</h1>
+    </header>
+
+        <style>
+            #links { text-align: right;}
+            #links ul { list-style-type: none; }
+        </style>
+
+        <section id="links">
+            <ul>
+                <li><strong><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="felxbox">CSS Flexbox Layout Guide - CSS-Trics</a></strong></li>
+                <li><a href="https://www.w3schools.com/css/css3_flexbox.asp" target="felxbox">CSS Flexbox - W3Schools</a></li>
+                <li><a href="#">&nbsp</a></li>
+                <li><a href="https://www.w3schools.com/css/css3_mediaqueries.asp" target="mediaQueries">CSS Media Queries</a></li>
+            </ul>
+        </section>
+
+    <div class="flexbox">
+        <div>
+            <h2>Flex item</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident eaque fuga vel laborum, quidem recusandae iure dolore earum aperiam accusantium cumque eius minus est repellendus! Aspernatur saepe provident dolorum atque.</p>
+        </div>
+        <div>
+            <h2>Flex item</h2>
+            <p>Ipsa quis necessitatibus eligendi minima accusamus, ducimus cumque unde accusantium repudiandae officia? Nemo corporis porro sed incidunt, nobis nesciunt, labore dolorum ea sequi maiores tenetur veritatis in magni atque eum.</p>
+        </div>
+        <div>
+            <h2>Flex item</h2>
+            <p>A rem quia optio enim nesciunt voluptatum distinctio iusto autem tenetur dicta, sapiente ipsam libero sequi perspiciatis deserunt, magni beatae repellendus adipisci cupiditate accusantium tempora porro natus, delectus error. Recusandae.</p>
+        </div>
+        <div>
+            <h2>Flex item</h2>
+            <p>Ipsa quis necessitatibus eligendi minima accusamus, ducimus cumque unde accusantium repudiandae officia? Nemo corporis porro sed incidunt, nobis nesciunt, labore dolorum ea sequi maiores tenetur veritatis in magni atque eum.</p>
+        </div>
+        <div>
+            <h2>Flex item</h2>
+            <p>A rem quia optio enim nesciunt voluptatum distinctio iusto autem tenetur dicta, sapiente ipsam libero sequi perspiciatis deserunt, magni beatae repellendus adipisci cupiditate accusantium tempora porro natus, delectus error. Recusandae.</p>
+        </div>
+        <div>
+            <h2>Flex item</h2>
+            <p>A rem quia optio enim nesciunt voluptatum distinctio iusto autem tenetur dicta, sapiente ipsam libero sequi perspiciatis deserunt, magni beatae repellendus adipisci cupiditate accusantium tempora porro natus, delectus error. Recusandae.</p>
+        </div>
+    </div>
+
+</body>
+</html>

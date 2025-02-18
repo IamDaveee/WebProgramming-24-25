@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox layout</title>
+    <style>
+        nav li, main { border: 1px solid black; padding: .25rem; }
+        nav ul { list-style-type: none; padding-inline-start: 0px; white-space: nowrap;}
+        body  { display: flex; flex-flow: row nowrap;}
+        nav { order: 1; }
+        nav li { width: fit-content; }
+
+        @media (orientation: portrait) {
+            body { flex-flow: column wrap; }
+            main { order: 2 }
+            nav ul { display: flex; flex-flow: row nowrap; justify-content: space-evenly;}
+        }
+        @media (max-width: 576px) {
+            nav ul { display: flex; flex-flow: column wrap; }
+            nav li { width: 100%; }
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">menü-x</a></li>
+            <li><a href="#">menü-x</a></li>
+            <li><a href="#">menü-x</a></li>
+        </ul>
+    </nav>
+    <main>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum officiis voluptatum sapiente necessitatibus magni laudantium iure vel consequuntur ad praesentium earum eius eum, commodi, dolor ipsa quisquam! Eos, nulla dignissimos?</p>
+    </main>
+</body>
+</html>

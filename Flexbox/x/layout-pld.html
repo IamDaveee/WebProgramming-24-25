@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title>
+    <style>
+        nav li, main { border: 1px solid black; padding: .5rem;}
+        nav li { white-space: nowrap; }
+        nav ul { list-style-type: none; padding-inline-start: 0px; }
+        body { display: flex; flex-flow: row nowrap;}
+        nav { order: 2}
+        
+        @media (orientation: portrait) {
+            body { flex-flow: column wrap; }
+            main {order:3}
+            nav ul { display: flex; flex-flow: row nowrap; }
+        }
+        @media (max-width: 576px) {
+            nav ul { display: flex; flex-flow: column wrap; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="">menü-x</a></li>
+            <li><a href="">menü-x</a></li>
+            <li><a href="">menü-x</a></li>
+        </ul>
+    </nav>
+    <main>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat quaerat debitis nisi fuga ipsum animi quas officia aut! Vel molestiae rerum quam obcaecati ab dignissimos culpa corporis quidem neque aut?</p>
+    </main>
+</body>
+</html>
