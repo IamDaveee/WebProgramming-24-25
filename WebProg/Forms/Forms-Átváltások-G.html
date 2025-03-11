@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form - átváltások</title>
+    <style>
+        input[type=text] {  }
+        fieldset{
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Átváltások</h1>
+    <p>
+        Szöveg bevitel: <input type="text" id="txt" onchange="myFunction()" maxlength="10" size="10">
+    </p>
+    <h2>Átváltások</h2>
+
+    <form action="#" name="atvalto">
+        <fieldset><legend><h3>Decimálisról</h3></legend>
+            <input type="number" name="dec" id="decimal" min="0" value="0" title="0-65535" max="65535"> =
+            <input type="number" name="bin" id="bin" disabled> b =
+            <input type="text" name="hex" id="hex"> hex
+        </fieldset>
+
+        <fieldset><legend><h3>Teljesítmény LE - kw</h3></legend>
+            <input type="number" name="LE" id="LE" min="0" placeholder=">0">LE =
+            <input type="number" name="kw" id="kw">kw =
+        </fieldset>
+
+        <fieldset><legend><h3>Hőmérséklet &deg;C - &deg;F - K</h3></legend>
+            <input type="number" name="C" id="C">&deg;C =
+            <input type="number" name="F" id="F">&deg;F =
+            <input type="number" name="K" id="K">K
+        </fieldset>
+    </form>
+
+    
+
+    <script>
+        function myFunction() {
+        // myFunction = () => {         // arrow function
+            console.log(document.getElementById('txt').value)
+        }
+        
+        
+        document.getElementById('decimal').onchange = ()  => {
+            console.log(document.getElementById('decimal').value)
+            const Decimal = document.getElementById('decimal')
+            if (Decimal.value < 0) { 
+                Decimal.value = 0
+                alert('0-65535') 
+            }
+            console.log(Decimal.value)
+            let x = Number(document.atvalto.dec.value)
+            console.log (x.toString(2), x.toString(16).toUpperCase())
+            const decimalrol = document.atvalto
+            decimalrol.bin.value = x.toString(2)
+            decimalrol.hex.value = x.toString(16).toUpperCase()
+            
+            console.log(decimalrol)
+            console.dir(decimalrol)
+
+            decimalrol.hex.disabled=true
+        }
+        //
+        const power=document.atvalto
+        power.LE.onchange = () => {
+            if (power.LE.value<0) {
+                power.LE.value=0
+            }
+            else{
+                //power.kw.value=Math.round(0.736*power.LE.value*100)/100
+                power.kw.value=(0.736*power.LE.value).toFixed(2)
+            }
+        }
+        power.kw.onchange = ()=>{
+            if (power.kw.value<0) {
+                power.kw.value
+            }
+            else{
+                power.LE.value=(power.kw.value/0.736).toFixed(1)
+            }
+        }
+
+        const temp = document.atvalto
+        function Temperature(key){
+            switch (key) {
+                case 'C':{
+                    temp.F.value = (temp.C.value * 9/5 + 32).toFixed(2)
+                    temp.K.value = (Number(temp.C.value) + 273.15).toFixed(2)
+                }
+                break;
+
+                case 'F':{
+                    temp.K.value=((temp.F.value-32)*5/9+273.15).toFixed(2)
+                    temp.C.value = ((temp.F.value - 32) * 5/9).toFixed(2)
+                }
+                break;
+
+                case 'K':{
+                    temp.F.value = (temp.K.value * 9/5 - 459.67).toFixed(2)
+                    temp.C.value = (temp.K.value - 273.15).toFixed(2)
+                }
+                break;
+            }
+        }
+        
+        temp.C.onchange = () => {
+            if (temp.C.value < -273.15) {
+                temp.C.value = -273.15
+            }
+            else{
+                Temperature('C')
+            }
+        }
+        temp.F.onchange = () =>  {
+            if (temp.F.value < -459.67) {
+                temp.F.value = -459.67
+            }
+            else{
+                Temperature('F')
+            }
+        }
+        temp.K.onchange = () => {
+            if (temp.K.value < 0) {
+                temp.K.value = 0
+            }
+            else{
+                Temperature('K')
+            }
+        }
+
+    </script>
+</body>
+</html>
