@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Űrlapok - belépés</title>
+    <style>
+        .material-symbols-outlined { 
+            vertical-align: middle; position: relative; left: -2rem;
+            cursor: pointer;
+        }
+        input { padding: .25rem; }
+        input[type=email], input[type=password] {}
+
+        .required::placeholder { color: red; }
+    </style>
+</head>
+
+<body>
+    <h1>Űrlapok</h1>
+
+    <div id="loginContainer">
+        <form action="#" name="login">
+            <fieldset>
+                <legend>
+                    <h2>Belépés - login</h2>
+                </legend>
+                Név: <input type="text" name="name" id="name" placeholder="Neved">
+                <p>E-mail: <input type="email" name="email" id="email" required
+                        placeholder="Email cím, megadása kötelező" title="Kötelező" class="required"></p>
+                <p>Jelszó: <input type="password" name="psw" id="psw" placeholder="Jelszó, megadása kötelező"
+                        class="required"> <span class="material-symbols-outlined" id="eye">visibility_off</span>
+                        <button type="button" name="show">Mutat</button> <span id="showPsw"></span></p>
+
+                <input type="submit" value="Belépés" name="submitInput"> <input type="reset" value="Visszaállít">
+                <p>
+                    <button type="submit" name="submitButton">Belépés</button> <button type="reset">Visszaállít</button>
+                </p>
+            </fieldset>
+        </form>
+    </div>
+    <script>
+        const loginForm = document.login
+
+        let invisible = true
+        document.getElementById("eye").onclick = () => {
+            // if(document.getElementById("eye").innerText == "visibility_off") {
+            if(invisible) {
+                loginForm.psw.type="text"
+                document.getElementById("eye").innerText = "visibility"
+            }
+            else {
+                loginForm.psw.type="password"
+                document.getElementById("eye").innerText = "visibility_off"
+            }  
+            invisible = !invisible
+        }
+
+        loginForm.show.onmouseover = () => {
+            document.getElementById("showPsw").innerText = loginForm.psw.value
+            loginForm.show.innerText="Húzd le a kurzort az elrejtéshez!"
+            // loginForm.psw.type="text"
+        }
+        loginForm.show.onmouseout=()=> {
+            document.getElementById("showPsw").innerText = ""
+            loginForm.show.innerText="Mutat"
+            // loginForm.psw.type="password"
+        }
+
+        loginForm.onsubmit = (event) => {
+            event.preventDefault()
+                console.dir(event.submitter); console.dir(event.submitter.name)
+
+            if (loginForm.psw.value == "" || loginForm.email.value == "") {
+                alert("Töltsön ki minden kötelező mezőt!")
+            }
+            else {
+                console.log(loginForm.name.value, loginForm.email.value, loginForm.psw.value)
+                alert("A belépés sikeres!")
+                document.getElementById("loginContainer").style.display = "none"
+                document.getElementById("loginContainer").innerHTML = "Üdvözöllek " + loginForm.name.value + " a webhelyen!<br>" + "// e-mail címed: "+ loginForm.email.value
+                document.getElementById("loginContainer").innerHTML = 
+                    `Üdvözöllek ${(loginForm.name.value) ? loginForm.name.value : loginForm.email.value} a webhelyen!`
+
+                loginForm.reset()
+                document.getElementById("loginContainer").style.display = "block"
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Űrlap - regisztráció, jelszóerősség</title>
+    <style>
+        .material-symbols-outlined { 
+            vertical-align: middle; position: relative; left: -2rem;
+            cursor: pointer;
+        }
+        input { padding: .25rem; }
+        .required::placeholder { color: red; }
+    </style>
+</head>
+
+<body>
+    <h1>Űrlap - regisztráció, jelszóerősség</h1>
+    <form action="#" name="reg" id="form">
+        <fieldset>
+            <legend><h2>Regisztáció</h2></legend>
+            <!-- input type="checkbox" name="" id="" readonly disabled tabindex="-1" -->
+            <input type="text" name="name" id="name" placeholder="Neved">
+            <p><input class="required" type="email" name="email" id="email" placeholder="e-mail cím" required></p>
+            <p><input type="password" class="required" name="psw" id="psw" placeholder="jelszó" required>
+                <span class="material-symbols-outlined" id="eye">visibility</span>
+            </p>
+            <p>Jelszó erősség:<br>
+                Hossz: <input type="checkbox" name="hossz" id="hossz" readonly tabindex="-1"> |
+                kisbetű: <input type="checkbox" name="kisbetu" id="kisbetu" readonly tabindex="-1"> |
+                nagybetű: <input type="checkbox" name="nagybetu" id="nagybetu" readonly tabindex="-1"> |
+                szám: <input type="checkbox" name="szam" id="szam" readonly tabindex="-1">
+            </p>
+            <label for="elfogad"><input type="checkbox" name="elfogad" id="elfogad"> Elfogadom a szabályzatot...</label>
+            <p>
+                <button type="submit" name="login">Belépés</button>
+                <button type="submit" name="registration">Regisztáció</button>
+                <button type="reset" name="reset">Visszaállít</button>
+            </p>
+        </fieldset>
+    </form>
+
+    <script>
+
+        const form = document.reg
+        //-----------------------
+        /*
+        form.psw.required=false;
+        form.elfogad.checked=true
+        form.psw.onmousehover =()=>form.psw.type="text"
+        form.psw.onmouseout =()=>form.psw.type="password"
+        */
+        //-----------------------
+
+        let visible=false
+        document.getElementById("eye").onclick = () => {
+            if(!visible){
+                form.psw.type="text"
+                document.getElementById("eye").innerText="visibility_off"
+            }
+            else{
+                form.psw.type="password"
+                document.getElementById("eye").innerText="visibility"
+            }
+            //console.log(visible)
+            visible=!visible
+        }
+
+        function login() {
+            document.getElementById("form").innerHTML=`Üdvözlünk újra <b>${(form.name.value)?form.name.value:form.email.value}</b>`
+            form.reset()
+        }
+        function registration() {
+            if (!form.elfogad.checked) {
+                    alert("Fogadja el a szerződést")
+                    form.elfogad.select()
+                }
+            else{
+                let confirmpsw=prompt("Erősítse meg a jelszót: ")
+                if (confirmpsw==form.psw.value) {
+                    alert("Sikeres Regisztráció")
+                    document.getElementById("form").innerHTML = `${(form.name.value)?"Sikeres regisztráció "+"<b>"+form.name.value+"</b>"+" névre, "+"<b>"+form.email.value+"</b>"+" email címre":"Sikeres regisztráció "+"<b>"+form.email.value+"</b>"+" email címre"}`
+                    form.reset()
+                }
+                else{
+                    alert("A jelszavak nem egyeznek")
+                    form.psw.focus()
+                }
+            }
+        }
+
+        form.onsubmit=(event)=>{
+            event.preventDefault()
+            if (event.submitter.name=="login") {
+                login()
+            }
+            else {
+                registration()
+            }
+        }
+
+    /* jelszóerősség 
+        - hossz
+        Regular expression https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+        - kisbetű
+        - nagybetű
+        - szám
+        visszajelzés szín, jelölönégyzetek: tiltott | csakolvasható 
+    */
+    </script>
+</body>
+
+</html>
