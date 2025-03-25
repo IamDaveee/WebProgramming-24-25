@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        h1{
+            text-align: center;
+        }
+        .container{
+            display: flex;
+            text-align: center;
+            justify-content: space-around;
+        }
         form{
             width: 50%;
         }
@@ -41,35 +49,37 @@
 </head>
 <body>
     
-    <h1>kapcsolatfelételi Űrlap</h1>
-    <form action="#" name="form" id="form">
-        <fieldset name="title" id="title">
-            <legend><h2>Miben segíthetünk?</h2></legend>
-            <input type="text" class="required" name ="titleMessage" id="titleMessage" placeholder="Üzenet tárgya" required>
+    <h1>Kapcsolatfelételi Űrlap</h1>
+    <div class="container">
+        <form action="#" name="form" id="form">
+            <fieldset name="title" id="title">
+                <legend><h2>Miben segíthetünk?</h2></legend>
+                <input type="text" class="required" name ="titleMessage" id="titleMessage" placeholder="Üzenet tárgya" required>
 
-        </fieldset>
-        <fieldset>
-            <legend><h2>Az Ön üzenete:</h2></legend>
-            <textarea class="required" name="message" id="message" placeholder="Írja le üzenetét" rows="5" required></textarea>
-        </fieldset>
-        <fieldset id="check">
-            <legend><h2>Honnan Hallott Rólunk?</h2></legend>
-            Kereső:<input type="checkbox" name="kereso" id="kereso" class="checkbox">|
-            Ajánlás:<input type="checkbox" name="suggest" id="suggest" class="checkbox">|
-            Hirdetés:<input type="checkbox" name="ad" id="ad" class="checkbox">|
-            Egyéb: <p> <input type="text" name="other" class="checkother" id="other"></p>
-        </fieldset>
-        <fieldset>
-            <legend><h2>Válasz Kérése</h2></legend>
-            <p>Amennyiben választ szeretne, adja meg azemail címét!</p>
-            <input type="email" class="email" id="email" name="email" placeholder="e-mail cím">
-            <p>Ezesetben el kell fogadnia az adatvédelmi nyilatkozatot</p>
-            <label for="accept"><input type="checkbox" name ="accept" id="accept" class="checkbox">Elolvastam, Elfogadom az adatvédelmi nyilatkozatot</label>
-        </fieldset>
-        <p>
-            <input type="submit" class="btn" id="submit-btn" value="Küldés">
-        </p>
-    </form>
+            </fieldset>
+            <fieldset>
+                <legend><h2>Az Ön üzenete:</h2></legend>
+                <textarea class="required" name="message" id="message" placeholder="Írja le üzenetét" rows="5" required></textarea>
+            </fieldset>
+            <fieldset id="check">
+                <legend><h2>Honnan Hallott Rólunk?</h2></legend>
+                Kereső:<input type="checkbox" name="kereso" id="kereso" class="checkbox">|
+                Ajánlás:<input type="checkbox" name="suggest" id="suggest" class="checkbox">|
+                Hirdetés:<input type="checkbox" name="ad" id="ad" class="checkbox">|
+                Egyéb: <p> <input type="text" name="other" class="checkother" id="other"></p>
+            </fieldset>
+            <fieldset>
+                <legend><h2>Válasz Kérése</h2></legend>
+                <p>Amennyiben választ szeretne, adja meg azemail címét!</p>
+                <input type="email" class="email" id="email" name="email" placeholder="e-mail cím">
+                <p>Ezesetben el kell fogadnia az adatvédelmi nyilatkozatot</p>
+                <label for="accept"><input type="checkbox" name ="accept" id="accept" class="checkbox">Elolvastam, Elfogadom az adatvédelmi nyilatkozatot</label>
+            </fieldset>
+            <p>
+                <input type="submit" class="btn" id="submit-btn" value="Küldés">
+            </p>
+        </form>
+    </div>
 
     <script>
         const form=document.form
