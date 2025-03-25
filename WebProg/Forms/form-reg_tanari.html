@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Űrlap - regisztráció, jelszóerősség</title>
+</head>
+
+<body>
+    <h1>Űrlap - regisztráció, jelszóerősség</h1>
+    <form action="#" name="reg" style="width: fit-content;" id="form">
+        <fieldset>
+            <legend><h2>Regisztáció</h2></legend>
+            <input type="text" name="name" id="name" placeholder="Neved">
+            <p><input type="email" name="email" id="email" placeholder="e-mail cím" required></p>
+            <p><input type="password" name="psw" id="psw" placeholder="jelszó" required></p>
+            <p>Jelszó erősség:<br>
+                <!-- input type="checkbox" name="" id="" readonly disabled tabindex="-1" -->
+                Hossz: <input type="checkbox" name="hossz" id="hossz" readonly tabindex="-1"> |
+                kisbetű: <input type="checkbox" name="kisbetu" id="kisbetu" readonly tabindex="-1"> |
+                nagybetű: <input type="checkbox" name="nagybetu" id="nagybetu" readonly tabindex="-1"> |
+                szám: <input type="checkbox" name="szam" id="szam" readonly tabindex="-1">
+            </p>
+            <label for="elfogad"><input type="checkbox" name="elfogad" id="elfogad"> Elfogadom a szabályzatot...</label>
+            <p><button type="submit" name="login">Belépés</button> 
+                <button type="submit" name="registration">Regisztáció</button>
+                <button type="reset" style="float: right;">Visszaállítás</button>
+            </p>
+        </fieldset>
+    </form>
+
+    <script>
+
+        const Form = document.reg
+        
+        /* teszt idejere 
+            Form.email.value = "x@x.hu"
+            Form.email.required = false
+            Form.elfogad.checked = true
+            Form.psw.required = false
+            Form.psw.onmouseover = () => Form.psw.type="text"
+            Form.psw.onmouseout = () => Form.psw.type="password"
+        */
+
+        function login() { 
+            alert("Belépés")
+        }
+
+        function registration() {
+            if (!Form.elfogad.checked) { 
+                    alert("Fogadd el a ...!")
+                    Form.elfogad.select()
+                }
+                else {
+                    let confimrPsw = prompt("Erősítse meg a jelszavát!")
+                    if (confimrPsw==Form.psw.value) {
+                        alert("Regisztráció sikeres!")
+                        document.getElementById("form").innerHTML='<p> A regisztráció a(z) <b>'+ Form.email.value +'</b> címről sikeres.</p>'
+                        Form.reset()
+                    }
+                    else {
+                        alert("A két jelszó nem egyezik meg!")
+                        // Form.psw.select()
+                        Form.psw.focus()
+                    }
+                }
+        }
+
+        Form.onsubmit = (event) => {
+            event.preventDefault()
+            console.log("submit: ", event.submitter.name)
+            console.log((event.submitter.name=="login")?"Belépés":"Regisztráció")
+            console.dir()
+            if (event.submitter.name=="login") { login() }
+            else { registration() }
+        }
+
+    /* jelszóerősség 
+        - hossz
+        Regular expression https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+        - kisbetű
+        - nagybetű
+        - szám
+        visszajelzés szín, jelölönégyzetek: tiltott | csakolvasható 
+    */
+    </script>
+</body>
+
+</html>
