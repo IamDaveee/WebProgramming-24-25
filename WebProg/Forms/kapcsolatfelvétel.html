@@ -99,6 +99,15 @@
                     form.reset()
                 }
             }
+            else if (form.titleMessage.value!=0 || form.message.value!=0){
+                alert("Üzenetet küldtünk")
+                console.log(`Miben segaíthetünk? ${form.titleMessage.value}`)
+                console.log(`Üzenet: ${form.message.value}`)
+                console.log(`Honnan hallott rólunk? Kereső:${form.kereso.checked},Ajánlás:${form.suggest.checked},Reklám:${form.ad.checked},Egyéb:${form.other.value}`)
+                form.reset()
+            }else{
+                alert("Kérem töltse ki a pirossal jelölt mezőket!")
+            }
         }
     </script>
 </body>

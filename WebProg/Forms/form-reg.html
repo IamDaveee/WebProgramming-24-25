@@ -13,6 +13,13 @@
         }
         input { padding: .25rem; }
         .required::placeholder { color: red; }
+
+        input[type=range]{
+            width: 90%;
+        }
+        progress{
+            width: 90%;
+        }
     </style>
 </head>
 
@@ -33,6 +40,11 @@
                 nagybetű: <input type="checkbox" name="nagybetu" id="nagybetu" readonly tabindex="-1"> |
                 szám: <input type="checkbox" name="szam" id="szam" readonly tabindex="-1">
             </p>
+            <p style="text-align: center;">
+                <input type="range" name="jelszoerosseg" max="4" min="0" value="0"><br>
+                <progress id="jelszoerosseg" min="0" max="4" value="0"></progress>
+            </p>
+
             <label for="elfogad"><input type="checkbox" name="elfogad" id="elfogad"> Elfogadom a szabályzatot...</label>
             <p>
                 <button type="submit" name="login">Belépés</button>
@@ -78,16 +90,24 @@
                     form.elfogad.select()
                 }
             else{
-                let confirmpsw=prompt("Erősítse meg a jelszót: ")
-                if (confirmpsw==form.psw.value) {
-                    alert("Sikeres Regisztráció")
-                    document.getElementById("form").innerHTML = `${(form.name.value)?"Sikeres regisztráció "+"<b>"+form.name.value+"</b>"+" névre, "+"<b>"+form.email.value+"</b>"+" email címre":"Sikeres regisztráció "+"<b>"+form.email.value+"</b>"+" email címre"}`
-                    form.reset()
-                }
-                else{
-                    alert("A jelszavak nem egyeznek")
+                
+                if (jelszoerosseg!=4) {
+                    alert("A jelszó nem elég erős")
                     form.psw.focus()
                 }
+                else{
+                    let confirmpsw=prompt("Erősítse meg a jelszót: ")
+                    if (confirmpsw==form.psw.value) {
+                        alert("Sikeres Regisztráció")
+                        document.getElementById("form").innerHTML = `${(form.name.value)?"Sikeres regisztráció "+"<b>"+form.name.value+"</b>"+" névre, "+"<b>"+form.email.value+"</b>"+" email címre":"Sikeres regisztráció "+"<b>"+form.email.value+"</b>"+" email címre"}`
+                        form.reset()
+                    }
+                    else{
+                        alert("A jelszavak nem egyeznek")
+                        form.psw.focus()
+                    }
+                }
+                
             }
         }
 
@@ -100,6 +120,58 @@
                 registration()
             }
         }
+
+        let jelszoerosseg
+        form.psw.oninput = ()=>{
+            jelszoerosseg=0
+            let jelszavak="";
+            if (form.psw.value.length>3) {
+                form.hossz.checked=true
+                jelszoerosseg++
+            }
+            else{
+                form.hossz.checked=false
+                jelszavak+="Rövid\n"
+            }
+            if (/[0-9]/.test(form.psw.value)) {
+                form.szam.checked=true
+                jelszoerosseg++
+            }
+            else{
+                form.szam.checked=false
+                jelszavak+="Nem tartalmaz számot\n"
+            }
+            if (/[a-z]/.test(form.psw.value)) {
+                form.kisbetu.checked=true
+                jelszoerosseg++
+            }
+            else{
+                form.kisbetu.checked=false
+                jelszavak+="Nem tartalmaz kisbetűt\n"
+            }
+            if (/[A-Z]/.test(form.psw.value)) {
+                form.nagybetu.checked=true
+                jelszoerosseg++
+            }
+            else{
+                form.nagybetu.checked=false
+                jelszavak+="Nem tartalmaz nagybetűt\n"
+            }
+
+            //alternatív
+            jelszoerosseg=form.hossz.checked+form.szam.checked+form.kisbetu.checked+form.nagybetu.checked
+            //
+
+            form.jelszoerosseg.value=jelszoerosseg
+            form.jelszoerosseg.title="Jelszóerősség 1-4: "+jelszoerosseg + "\n"+jelszavak
+            
+            //progressba
+            document.getElementById("jelszoerosseg").value=jelszoerosseg
+            document.getElementById("jelszoerosseg").title="Jelszóerősség 1-4: "+jelszoerosseg + "\n"+jelszavak
+            //
+        }
+
+
 
     /* jelszóerősség 
         - hossz
