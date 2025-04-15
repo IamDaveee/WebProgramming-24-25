@@ -52,10 +52,23 @@
         let H=0;
         let L=0;
 
+        let hue=document.getElementById("hue");
+        let sat=document.getElementById("sat");
+        let light=document.getElementById("light");
+        let hueNum=document.getElementById("hueNum");
+        let satNum=document.getElementById("satNum");
+        let lightNum=document.getElementById("lightNum");
+
+        let box=document.getElementById("box")
+        let hueRange=document.getElementById("hue")
+        let satRange=document.getElementById("sat")
+
+
         button.onclick=()=>{
-            let colors=24
-            S=100;
-            H=(Math.round(colors*Math.random())) *360 / colors
+            let hColors=30
+            let sColors=25
+            S=(Math.round(sColors*Math.random())) *100 / sColors
+            H=(Math.round(hColors*Math.random())) *360 / hColors
             L=50;
             element.style.backgroundColor=`hsl(${H},${S}%,${L}%)`
 
@@ -65,38 +78,38 @@
         }
 
         
-
-        let hueNum=document.getElementById("hueNum");
-        let satNum=document.getElementById("satNum");
-
-        let box=document.getElementById("box")
-        let hueRange=document.getElementById("hue")
-        let satRange=document.getElementById("sat")
-
         hueRange.oninput=()=>{
-            let hue=document.getElementById("hue").value;
-            let sat=document.getElementById("sat").value;
-            let light=document.getElementById("light").value;
+            hue.value;
+            sat.value;
+            light.value;
 
-            box.style.backgroundColor=`hsl(${hue},${sat}%,${light}%)`
-            hueNum.value=hue
+            box.style.backgroundColor=`hsl(${hue.value},${sat.value}%,${light.value}%)`
+            hueNum.value=hue.value
         }
         satRange.oninput=()=>{
-            let hue=document.getElementById("hue").value;
-            let sat=document.getElementById("sat").value;
-            let light=document.getElementById("light").value;
+            hue.value;
+            sat.value;
+            light.value;
 
-            box.style.backgroundColor=`hsl(${hue},${sat}%,${light}%)`
-            satNum.value=sat
+            box.style.backgroundColor=`hsl(${hue.value},${sat.value}%,${light.value}%)`
+            satNum.value=sat.value
+        }
+        hueNum.onchange =()=>{
+            hue.value=hueNum.value
+            box.style.backgroundColor=`hsl(${hue.value},${sat.value}%,${light.value}%)`
+        }
+        satNum.onchange =()=>{
+            sat.value=satNum.value
+            box.style.backgroundColor=`hsl(${hue.value},${sat.value}%,${light.value}%)`
         }
 
         let verify=document.getElementById("verify")
         verify.onclick=()=>{
-            let hue=document.getElementById("hue").value;
-            let sat=document.getElementById("sat").value;
-            let light=document.getElementById("light").value;
+            hue.value;
+            sat.value;
+            light.value;
 
-            if (Math.round(H)==Math.round(hue)&&Math.round(S)==Math.round(sat)) {
+            if (Math.round(H)==Math.round(hue.value)&&Math.round(S)==Math.round(sat.value)) {
                 document.getElementById("siker").innerText="Sikerült"
             } else{
                 document.getElementById("siker").innerText="Nem sikerült"
