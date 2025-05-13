@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII kódok</title>
+    <style>
+        table, td, th { border: 1px solid black}
+        th, td { padding: .75rem; }
+    </style>
+</head>
+<body>
+    
+    <script>
+        let codeTable = '<table>'
+        // fejléc sor
+            codeTable += '<tr><th></th>'
+                for (let oszlop = 0; oszlop < 10; oszlop++) { codeTable += `<th>${oszlop}</th>`}
+            codeTable += '</tr>'
+        // fejléc sor kész
+            
+        for (let sor = 0; sor <= 25; sor++) {
+            codeTable += `<th>${sor*10}</th>` // sor fejléc
+            for (let oszlop = 0; oszlop < 10; oszlop++) {
+                let ASCIIcode = 10 * sor + oszlop
+                if (ASCIIcode <= 255) { codeTable += `<td align="center" title="${ASCIIcode}">${String.fromCharCode(ASCIIcode)}</td>` }
+            }
+            codeTable += '</tr>'
+        }
+        codeTable += '</table>'
+        
+        document.body.innerHTML = codeTable
+
+    </script>
+</body>
+</html>

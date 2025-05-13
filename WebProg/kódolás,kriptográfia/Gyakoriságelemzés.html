@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gyakoriság elemzés</title>
+
+</head>
+
+<body>
+
+	<textarea name="elemzendo" id="elemzendo" onchange="elemez()" style="width: 100%">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quibusdam assumenda exercitationem magni nostrum ipsum, mollitia obcaecati, magnam est id facilis eaque saepe? Quo, dolore. Dolorum tempore laudantium corporis provident.</textarea>
+	<button id="elemez">elemzés</button>
+
+	<div id="eredmeny"></div>
+
+<script> 
+
+	document.getElementById("elemez").onclick = () => {
+		// var szoveg = new String;
+		let szoveg = document.getElementById('elemzendo').value;
+		let gyakorisag = new Array();
+
+		for (let ASCIIcode = 0; ASCIIcode < 256; ++ASCIIcode)
+		{ 
+			gyakorisag[ASCIIcode] = 0
+		}
+
+		// szoveg = prompt('Szöveg: ');
+
+		let hossz = szoveg.length;
+
+		const eredmeny = document.getElementById("eredmeny")
+
+		eredmeny.innerHTML = '<p>' + szoveg + '<br>' + hossz + ' karakter </p>'
+
+		for (let i=0; i < szoveg.length; ++i) {
+			console.log (szoveg.charCodeAt(i),' -- ',szoveg.charAt(i))
+				// csak betűk gyakorisága! szóközé!? Kódolt szöveg esetén, visszafejtéshez minden karakteré
+				// kis és nagy betű ne legyen megkülönböztetve
+			++gyakorisag[szoveg.charCodeAt(i)]
+		}
+
+		for (let i=0; i < gyakorisag.length; ++i) {
+			if (gyakorisag[i] != 0) {
+				eredmeny.innerHTML += i + ' -- " <b style="color: red">'+ String.fromCharCode(i) + '</b> " ' + gyakorisag[i] +' db <br>'
+			}
+	}
+}
+
+</script>
+
+</body></html>
