@@ -107,7 +107,6 @@
                         form.psw.focus()
                     }
                 }
-                
             }
         }
 
@@ -121,10 +120,24 @@
             }
         }
 
+        function Jelszovizsgalat(minta, checkboxName, uzenet) {
+            if (minta.test(form.psw.value)) {
+                checkboxName.checked=true
+                jelszoerosseg++
+                uzenet=""
+            }
+            else{
+                checkboxName.checked=false
+                //jelszavak+=üzenet
+            }
+            return uzenet
+        }
+        let jelszavak="";
+        
         let jelszoerosseg
         form.psw.oninput = ()=>{
             jelszoerosseg=0
-            let jelszavak="";
+            jelszavak="";
             if (form.psw.value.length>3) {
                 form.hossz.checked=true
                 jelszoerosseg++
@@ -133,6 +146,10 @@
                 form.hossz.checked=false
                 jelszavak+="Rövid\n"
             }
+
+
+            jelszavak+= Jelszovizsgalat(/[0-9]/, form.szam, "Nem tartalmaz számot\n")
+            /*
             if (/[0-9]/.test(form.psw.value)) {
                 form.szam.checked=true
                 jelszoerosseg++
@@ -141,6 +158,10 @@
                 form.szam.checked=false
                 jelszavak+="Nem tartalmaz számot\n"
             }
+            */
+            jelszavak+= Jelszovizsgalat(/[a-z]/,form.kisbetu, "Nem tartalmaz kisbetűt\n")
+            /*
+
             if (/[a-z]/.test(form.psw.value)) {
                 form.kisbetu.checked=true
                 jelszoerosseg++
@@ -149,6 +170,11 @@
                 form.kisbetu.checked=false
                 jelszavak+="Nem tartalmaz kisbetűt\n"
             }
+
+            */
+
+            jelszavak+= Jelszovizsgalat(/[A-Z]/, form.nagybetu, "Nem tartalmaz nagybetűt\n")
+            /*
             if (/[A-Z]/.test(form.psw.value)) {
                 form.nagybetu.checked=true
                 jelszoerosseg++
@@ -157,9 +183,9 @@
                 form.nagybetu.checked=false
                 jelszavak+="Nem tartalmaz nagybetűt\n"
             }
-
+            */
             //alternatív
-            jelszoerosseg=form.hossz.checked+form.szam.checked+form.kisbetu.checked+form.nagybetu.checked
+                //jelszoerosseg=form.hossz.checked+form.szam.checked+form.kisbetu.checked+form.nagybetu.checked
             //
 
             form.jelszoerosseg.value=jelszoerosseg

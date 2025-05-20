@@ -48,12 +48,19 @@
     </style>
 </head>
 <body>
-    
     <h1>Kapcsolatfelételi Űrlap</h1>
     <div class="container">
         <form action="#" name="form" id="form">
             <fieldset name="title" id="title">
                 <legend><h2>Miben segíthetünk?</h2></legend>
+                <select name="targy" id="targy">
+                    <option value="" selected disabled>Válasszon!</option>
+                    <option value="kerdeles">Kérdés</option>
+                    <option value="rendeles">Rendelés</option>
+                    <optgroup label="Egyebek">
+                        <option value="egyeb">Egyéb</option>
+                    </optgroup>
+                </select>
                 <input type="text" class="required" name ="titleMessage" id="titleMessage" placeholder="Üzenet tárgya" required>
 
             </fieldset>
@@ -67,7 +74,27 @@
                 Ajánlás:<input type="checkbox" name="suggest" id="suggest" class="checkbox">|
                 Hirdetés:<input type="checkbox" name="ad" id="ad" class="checkbox">|
                 Egyéb: <p> <input type="text" name="other" class="checkother" id="other"></p>
+
+                <select multiple name="honnan" id="honnan" size="3">
+                    <option selected disabled>Honnan hallott rólunk?</option>
+                    <optgroup label="Első">
+                        <option value="kereso">Kereső</option>
+                        <option value="hirdetes">Hirdetés</option>
+                        <option value="ajanlas">Ajánlás</option>
+                    </optgroup>
+                    <optgroup label="Második">
+                        <option value="kereso">Kereső</option>
+                        <option value="hirdetes">Hirdetés</option>
+                        <option value="ajanlas">Ajánlás</option>
+                    </optgroup>
+                    <optgroup label="Harmadik">
+                        <option value="kereso">Kereső</option>
+                        <option value="hirdetes">Hirdetés</option>
+                        <option value="ajanlas">Ajánlás</option>
+                    </optgroup>
+                </select>
             </fieldset>
+
             <fieldset>
                 <legend><h2>Válasz Kérése</h2></legend>
                 <p>Amennyiben választ szeretne, adja meg azemail címét!</p>
@@ -75,6 +102,12 @@
                 <p>Ezesetben el kell fogadnia az adatvédelmi nyilatkozatot</p>
                 <label for="accept"><input type="checkbox" name ="accept" id="accept" class="checkbox">Elolvastam, Elfogadom az adatvédelmi nyilatkozatot</label>
             </fieldset>
+
+            <fieldset><legend><h2>Statisztika</h2></legend>
+                <input type="number" name="isz" id="isz" placeholder="Irányítószám" min="1010" max="9999">
+                <input type="number" name="sz_ev" id="sz_ev" placeholder="Születési Év">
+            </fieldset>
+
             <p>
                 <input type="submit" class="btn" id="submit-btn" value="Küldés">
             </p>
@@ -107,6 +140,31 @@
                 form.reset()
             }else{
                 alert("Kérem töltse ki a pirossal jelölt mezőket!")
+            }
+        }
+
+        form.isz.onchange = () =>{
+            if (form.isz.value>9999) {
+                form.isz.value=9999
+                form.isz.max=9999
+            }
+            if (form.isz.value<1010) {
+                form.isz.value=1010
+                form.isz.min=1010
+            }
+        }
+
+        form.sz_ev.onchange = () =>{
+            const ideiev = new Date().getFullYear()
+            if (form.sz_ev.value>ideiev-18) {
+                alert("Nem vagy még 18 éves")
+                form.sz_ev.value=ideiev-18
+                form.sz_ev.max=ideiev-18
+            }
+            if (form.sz_ev.value<ideiev-110) {
+                alert("Halott vagy")
+                form.sz_ev.value=ideiev-110
+                form.sz_ev.min=ideiev-110
             }
         }
     </script>

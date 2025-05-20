@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark-mód, font-size +/-</title>
+    <style>
+        html { font-size: 10; }
+        body { font-size: inherit; }
+        .switch{
+            color: black;
+            border: 5px solid black;
+            font-size: x-large;
+            cursor: pointer;
+        }
+        .dark {
+            background-color: black;
+            color: white;
+        }
+        .darkButton{
+            background-color: black;
+            color: white;
+            border: 5px solid white;
+        }
+        .icon{
+            fill: black;
+            cursor: pointer;
+        }
+        .iconDark{
+            fill: white;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        svg{
+            margin: 0,5rem;
+            padding: 0,5rem;
+        }
+    </style> 
+</head>
+<body>
+
+    
+    <div class="container" id="container">
+        <div class="left">
+            <h1>Light/Dark mód, FontSize +/-</h1>
+        </div>
+        <div class="right">
+            <svg class="icon" id="iconM" width="60" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"/></svg>
+
+            <svg class="icon" id="iconD" width="60" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+
+            <svg class="icon" id="iconU" width="60" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2 160 448c0 17.7 14.3 32 32 32s32-14.3 32-32l0-306.7L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+        </div>
+    </div>
+ 
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet optio voluptatem molestias officia dolorum enim maxime perspiciatis cumque, amet earum a architecto iste eligendi ex impedit ullam consequuntur voluptatibus corporis!</p>
+    <p>Error sed cupiditate praesentium incidunt quam eaque suscipit quos at eveniet maiores itaque delectus, sit non nam velit officia dolor quae! Obcaecati neque, explicabo natus at qui facere aut facilis.</p>
+    
+    
+
+    <script> 
+    // Dark-mód
+        const moon=document.querySelector("#iconM")
+        const arrowD=document.querySelector("#iconD")
+        const arrowU=document.querySelector("#iconU")
+        let count=0
+        moon.onclick=()=>{
+            document.body.classList.toggle("dark");
+            moon.classList.toggle("iconDark");
+            arrowU.classList.toggle("iconDark")
+            arrowD.classList.toggle("iconDark")
+            if (count%2==0){
+                moon.innerHTML='<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"/>'
+            }
+            else{
+                moon.innerHTML='<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"/>'
+            }
+            count++
+        }
+        // document.body.classList.toggle('dark');
+
+        // document.body.classList.remove('dark') 
+        // document.body.classList.add('dark')
+            
+
+    // Font-size -> element.style.fontSize
+        let fontSize=10
+        document.body.style.fontSize=(2*fontSize)+"px"
+        arrowU.onclick=()=>{
+            fontSize+=1
+            if (fontSize>=20) {
+                fontSize=20
+            }
+            document.body.style.fontSize=(2*fontSize)+"px"
+        }
+        arrowD.onclick=()=>{
+            fontSize-=1
+            if (fontSize<=8) {
+                fontSize=8
+            }
+            document.body.style.fontSize=(2*fontSize)+"px"
+        }
+        // body elemre
+            console.dir  (document.body)
+        // html elemre
+            console.dir (document.body.parentElement)  
+        /*
+            html, body betűméret változtatás 10%
+            betűméret 10px - 32px
+                if / conditional
+                Math.min / Math.max
+        */
+        
+    </script>
+</body>
+</html>

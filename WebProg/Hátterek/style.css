@@ -44,10 +44,14 @@ body{
     background-image: url("./pics/cimkep.jpg");
     background-size: cover;
     margin: auto;
+    position: relative;
 }
 #header h1{
     padding: .5rem;
     background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 #reszlet{
     max-width: 75%;
